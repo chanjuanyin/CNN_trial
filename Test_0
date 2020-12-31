@@ -1,0 +1,52 @@
+# Make some imports
+import torch 
+import torchvision
+import torch.nn as nn
+import numpy as np
+import torchvision.transforms as transforms
+import matplotlib.pyplot as plt
+
+# 1. Pytorch tensors
+
+# Very similar to numpy
+x = torch.tensor(1.)
+print(x)
+
+# create tensor with values [1,2,3,4,5]
+# Float is 32-bit floating-point number
+x = torch.tensor([1,2,3,4,5]).float()
+print(x)
+print(x.size())
+
+# initialize tensor with SHAPE 2x5x5, initialized with random uniform distribution (between (0,1) )
+ran = torch.Tensor(2,5,5).uniform_()
+print(ran.size())
+print(ran)
+
+# min, max, mean, reshaping
+ran = torch.Tensor(2,5,5).uniform_()
+print(ran)
+print(f'size of ran: {ran.size()}') # same as shape in numpy
+print(f'min value of ran: {ran.min()}')
+print(f'max value of ran: {ran.max()}')
+print(f'mean value of ran: {ran.mean()}')
+
+# convert ran shape into (5,2,5) instead of 2,5,5
+rsan = ran.view(5,2,5)
+"""
+2x3 matrix
+1,2,3
+4,5,6
+.view(3,2) =>
+1,2
+3,4
+5,6
+.transpose(1,0) (.permute(1,0)) =>
+1,4
+2,5
+3,6
+"""
+print(f'size/shape of ran: rsan {rsan.size()}')
+
+
+
