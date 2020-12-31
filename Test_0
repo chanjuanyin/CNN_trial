@@ -1,3 +1,27 @@
+"""
+Table of contents:
+
+1. Pytorch tensors
+
+2. Basic autograd example 1
+
+3. Basic autograd example 2
+
+4. Loading data from numpy
+
+5. Input pipeline
+
+6. Input pipeline for custom dataset
+
+7. Pretrained model
+
+8. Save and load model
+
+9. Train a simple MNIST Neural nets
+
+"""
+
+
 # Make some imports
 import torch 
 import torchvision
@@ -48,5 +72,32 @@ rsan = ran.view(5,2,5)
 """
 print(f'size/shape of ran: rsan {rsan.size()}')
 
+# Tensor math: uniform random (0,1), multiply by 10 and convert to integer
+x = (torch.Tensor(2, 3, 4).uniform_() * 10).int()
+y = (torch.Tensor(2, 3, 4).uniform_() * 10).int()
+print(x.size())
+print(y.size())
+print(f'Value of x and y')
+print(x)
+print(y)
+a = x + y
+m = x * y
+print(f'Value of a and m')
+print(a)
+print(m)
 
+# transpose of y (the last 2 dimensions), swap dimension 1 and dimension 2
+# yt = y.transpose(1, 2)
+# print(f'size of yt {yt.size()}') # 2, 4, 3
+# print(yt)
+# x (2, 3, 4) , yt (2, 4, 3) => matmul (2, 3, 3)
+# Note: matmul means matrix multiplication 
+
+yt = y.permute(0,2,1)
+print(f'size of yt {yt.size()}')
+print(yt)
+
+matmul = torch.matmul(x, yt)
+print(f'size of matmul {matmul.size()}')
+print(matmul)
 
